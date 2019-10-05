@@ -12,7 +12,37 @@ module.exports = {
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
-
+    propertyTitle: {
+      type: "string"
+    },
+    estate: {
+      type: "string"
+    },
+    grossArea: {
+      type: "string"
+    },
+    rent: {
+      type: "number"
+    },
+    imageURL: {
+      type: "string"
+    },
+    Bedrooms: {
+      type: "number"
+    },
+    expectedTenants: {
+      type: "number"
+    },
+    highlighted: {
+      type: "boolean"
+    },
+    // createdTime: {
+    //   type: "string",
+      
+    // },
+    // updatedTime: {
+    //   type: "date"
+    // },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
