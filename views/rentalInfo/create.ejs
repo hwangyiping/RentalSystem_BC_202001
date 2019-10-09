@@ -1,0 +1,85 @@
+<!-- Narbar -->
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Search</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Create</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Admin</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- Jumbotron -->
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Real Estate Rental System</h1>
+                <p class="lead">Real Estate Rental Management System is a web-based system to facilitate flatshare and
+                    finding roommates.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- checkbox -->
+<h3>Property Create Form</h3>
+<form>
+    <div class="row">
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label for="propertyTitle">Property title</label>
+                <input type="text" class="form-control" id="propertyTitle">
+            </div>
+            <div class="form-group">
+                <label for="estate">Estate:</label>
+                <select class="form-control" id="estate">
+                    <option>Festival City</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="grossArea">Gross Area:</label>
+                <input type="number" min="1" class="form-control" id="grossArea">
+            </div>
+            <div class="form-group">
+                <label for="rent">Rent:</label>
+                <input type="number" min="1" class="form-control" id="rent">
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12">
+            <div class="form-group">
+                <label for="imageURL">Image URL:</label>
+                <input type="text" class="form-control" id="imageURL">
+            </div>
+            <div class="form-group">
+                <label for="bedrooms">Bedrooms:</label>
+                <input type="number" min="1" class="form-control" id="bedrooms">
+            </div>
+            <div class="form-group">
+                <label for="expectedTenants">Expected Tenants:</label>
+                <input type="number" min="1" class="form-control" id="expectedTenants">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="">
+                    Highlighted Property
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">&nbspSubmit&nbsp</button>
+        </div>
+    </div>
+</form>

@@ -21,6 +21,7 @@ module.exports.routes = {
 
   '/': { view: 'pages/homepage' },
   'get /rentalInfo/home': { view: 'rentalInfo/home'},
+  'get /rentalInfo/create': { view: 'rentalInfo/create'},
 
 
   /***************************************************************************
