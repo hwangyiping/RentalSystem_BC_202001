@@ -5,13 +5,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Search</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Create</a>
+                        <a class="nav-link" href="./create">Create</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Admin</a>
@@ -39,16 +39,36 @@
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <h6 class="text-primary mb-2">Title</h6>
+                <h6 class="text-primary mb-2"><%= rentalInfo[0].propertyTitle %></h6>
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=720701948,457557751&fm=58&bpow=600&bpoh=600"
+                        <img src="<%= rentalInfo[0].imageURL %>"
+                            class="card-img img-responsive" alt="..."></div>
+                    <div class="col-md-8 pl-4">
+                        <ul class="list-group">
+                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[0].estate %></li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[0].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[0].rent %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-xs-12">
+        <div class="card">
+            <div class="px-4 py-3">
+                <h6 class="text-primary mb-2"><%= rentalInfo[1].propertyTitle %></h6>
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="<%= rentalInfo[1].imageURL %>"
                             class="card-img img-responsive" alt="..." style="height: 172px"></div>
                     <div class="col-md-8 pl-4">
                         <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b>Festival City</li>
-                            <li class="list-group-item"><b>Gross Area:</b>700 sq feet</li>
-                            <li class="list-group-item"><b>Rent:</b>$18000</li>
+                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[1].estate %></li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[1].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[1].rent %></li>
                         </ul>
                     </div>
                 </div>
@@ -58,16 +78,16 @@
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <h6 class="text-primary mb-2">Title</h6>
+                <h6 class="text-primary mb-2"><%= rentalInfo[2].propertyTitle %></h6>
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=720701948,457557751&fm=58&bpow=600&bpoh=600"
+                        <img src="<%= rentalInfo[2].imageURL %>"
                             class="card-img img-responsive" alt="..." style="height: 172px"></div>
                     <div class="col-md-8 pl-4">
                         <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b>Festival City</li>
-                            <li class="list-group-item"><b>Gross Area:</b>700 sq feet</li>
-                            <li class="list-group-item"><b>Rent:</b>$18000</li>
+                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[2].estate %></li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[2].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[2].rent %></li>
                         </ul>
                     </div>
                 </div>
@@ -77,35 +97,16 @@
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <h6 class="text-primary mb-2">Title</h6>
+                <h6 class="text-primary mb-2"><%= rentalInfo[3].propertyTitle %></h6>
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=720701948,457557751&fm=58&bpow=600&bpoh=600"
+                        <img src="<%= rentalInfo[3].imageURL %>"
                             class="card-img img-responsive" alt="..." style="height: 172px"></div>
                     <div class="col-md-8 pl-4">
                         <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b>Festival City</li>
-                            <li class="list-group-item"><b>Gross Area:</b>700 sq feet</li>
-                            <li class="list-group-item"><b>Rent:</b>$18000</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xs-12">
-        <div class="card">
-            <div class="px-4 py-3">
-                <h6 class="text-primary mb-2">Title</h6>
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=720701948,457557751&fm=58&bpow=600&bpoh=600"
-                            class="card-img img-responsive" alt="..." style="height: 172px"></div>
-                    <div class="col-md-8 pl-4">
-                        <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b>Festival City</li>
-                            <li class="list-group-item"><b>Gross Area:</b>700 sq feet</li>
-                            <li class="list-group-item"><b>Rent:</b>$18000</li>
+                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[3].estate %></li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[3].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[3].rent %></li>
                         </ul>
                     </div>
                 </div>
@@ -113,5 +114,4 @@
         </div>
     </div>
 </div>
-
 </div>

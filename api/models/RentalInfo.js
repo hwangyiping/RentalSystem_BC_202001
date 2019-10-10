@@ -19,7 +19,7 @@ module.exports = {
       type: "string"
     },
     grossArea: {
-      type: "string"
+      type: "number"
     },
     rent: {
       type: "number"
@@ -36,13 +36,6 @@ module.exports = {
     highlighted: {
       type: "boolean"
     },
-    // createdTime: {
-    //   type: "string",
-      
-    // },
-    // updatedTime: {
-    //   type: "date"
-    // },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗

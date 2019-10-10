@@ -5,7 +5,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="./home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Search</a>
@@ -36,46 +36,46 @@
 </div>
 <!-- checkbox -->
 <h3>Property Create Form</h3>
-<form>
+<form action="/rentalInfo/create" method="POST">
     <div class="row">
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label for="propertyTitle">Property title</label>
-                <input type="text" class="form-control" id="propertyTitle">
+                <input type="text" class="form-control" id="propertyTitle" name="RentalInfo[propertyTitle]">
             </div>
             <div class="form-group">
                 <label for="estate">Estate:</label>
-                <select class="form-control" id="estate">
+                <select class="form-control" id="estate" name="RentalInfo[estate]">
                     <option>Festival City</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option>Tin Ma Court</option>
+                    <option>City One Shatin</option>
                 </select>
             </div>
             <div class="form-group">
                 <label for="grossArea">Gross Area:</label>
-                <input type="number" min="1" class="form-control" id="grossArea">
+                <input type="number" min="1" class="form-control" id="grossArea" name="RentalInfo[grossArea]">
             </div>
             <div class="form-group">
                 <label for="rent">Rent:</label>
-                <input type="number" min="1" class="form-control" id="rent">
+                <input type="number" min="1" class="form-control" id="rent" name="RentalInfo[rent]">
             </div>
         </div>
         <div class="col-md-6 col-xs-12">
             <div class="form-group">
                 <label for="imageURL">Image URL:</label>
-                <input type="text" class="form-control" id="imageURL">
+                <input type="text" class="form-control" id="imageURL" name="RentalInfo[imageURL]">
             </div>
             <div class="form-group">
                 <label for="bedrooms">Bedrooms:</label>
-                <input type="number" min="1" class="form-control" id="bedrooms">
+                <input type="number" min="1" class="form-control" id="bedrooms" name="RentalInfo[bedrooms]">
             </div>
             <div class="form-group">
                 <label for="expectedTenants">Expected Tenants:</label>
-                <input type="number" min="1" class="form-control" id="expectedTenants">
+                <input type="number" min="1" class="form-control" id="expectedTenants" name="RentalInfo[expectedTenants]">
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="">
+                    <input type="checkbox" value="true" name="RentalInfo[highlighted]">
                     Highlighted Property
                 </label>
             </div>
