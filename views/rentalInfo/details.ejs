@@ -1,22 +1,22 @@
 <div class="row no-gutters">
-    <div class="col-md-12 col-xs-12">
+    <div class="col-12">
         <div class="card">
             <div class="px-4 py-3">
+                <h6 class="text-primary mb-2"><%= rentalInfo.propertyTitle %></h6>
                 <div class="row no-gutters">
-                    <div class="col-md-8">
-                        <img src="/images/1.png" class="card-img img-responsive" alt="..."
-                        class="img-resposible" style="height: 200px">
-                    </div>
-                    <div class="col-md-4">
+                    <img src="<%= rentalInfo.imageURL %>" class="col-8 card-img img-details" alt="...">
+                    <div class="col-4 pl-4">
                         <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b>213</li>
-                            <li class="list-group-item"><b>Gross Area:</b>123 sq feet</li>
-                            <li class="list-group-item"><b>Rent:</b>$123</li>
+                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo.estate %></li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo.grossArea %> sq.ft</li>
+                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo.rent %></li>
+                            <li class="list-group-item"><b>Badrooms:</b><%= rentalInfo.bedrooms %></li>
+                            <li class="list-group-item"><b>Expected Tenants:</b><%= rentalInfo.expectedTenants %></li>
+                            <li class="list-group-item"><b>Created:</b><%= rentalInfo.createdAt %></li>
+                            <li class="list-group-item"><b>Updated:</b><%= rentalInfo.updatedAt %></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-</div>

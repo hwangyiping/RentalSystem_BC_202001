@@ -22,7 +22,8 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   'GET /rentalInfo/home': 'RentalInfoController.home',
   'get /rentalInfo/create': { view: 'rentalInfo/create'},
-  'get /rentalInfo/details': { view: 'rentalInfo/details'},
+  // '/rentalInfo/details': { view: 'rentalInfo/details'},
+  'GET /rentalInfo/details': 'RentalInfoController.details',
 
 
   /***************************************************************************

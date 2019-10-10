@@ -23,6 +23,11 @@ module.exports = {
 
         return res.ok("Successfully created!");
     },
+    details: async function (req, res) {
+        let reqid = req.query.id;
+        let reqdata = await RentalInfo.findOne({where: { id: reqid }});
+        return res.view('rentalInfo/details', {rentalInfo: reqdata});
+    },
 
 };
 

@@ -1,26 +1,28 @@
 <!-- Narbar -->
-<div class="row">
-    <div class="col-md-12 col-xs-12">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./create">Create</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Admin</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">RERS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./create">Create</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Admin</a>
+            </li>
+        </ul>
     </div>
-</div>
+</nav>
+
 <!-- Jumbotron -->
 <div class="row">
     <div class="col-md-12 col-xs-12">
@@ -39,15 +41,16 @@
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <h6 class="text-primary mb-2"><%= rentalInfo[0].propertyTitle %></h6>
+                <a href="./details?id=<%= rentalInfo[0].id %>">
+                    <h6 class="text-primary mb-2"><%= rentalInfo[0].propertyTitle %></h6>
+                </a>
                 <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="<%= rentalInfo[0].imageURL %>"
-                            class="card-img img-responsive" alt="..."></div>
-                    <div class="col-md-8 pl-4">
+                    <div class="col-4">
+                        <img src="<%= rentalInfo[0].imageURL %>" class="card-img img-home" alt="..."></div>
+                    <div class="col-8 pl-4">
                         <ul class="list-group">
                             <li class="list-group-item"><b>Estate:</b><%= rentalInfo[0].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[0].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[0].grossArea %> sq.ft</li>
                             <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[0].rent %></li>
                         </ul>
                     </div>
@@ -59,15 +62,16 @@
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <h6 class="text-primary mb-2"><%= rentalInfo[1].propertyTitle %></h6>
+                <a href="./details?id=<%= rentalInfo[1].id %>">
+                    <h6 class="text-primary mb-2"><%= rentalInfo[1].propertyTitle %></h6>
+                </a>
                 <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="<%= rentalInfo[1].imageURL %>"
-                            class="card-img img-responsive" alt="..." style="height: 172px"></div>
-                    <div class="col-md-8 pl-4">
+                    <div class="col-4">
+                        <img src="<%= rentalInfo[1].imageURL %>" class="card-img img-home" alt="..."></div>
+                    <div class="col-8 pl-4">
                         <ul class="list-group">
                             <li class="list-group-item"><b>Estate:</b><%= rentalInfo[1].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[1].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[1].grossArea %> sq.ft</li>
                             <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[1].rent %></li>
                         </ul>
                     </div>
@@ -78,15 +82,16 @@
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <h6 class="text-primary mb-2"><%= rentalInfo[2].propertyTitle %></h6>
+                <a href="./details?id=<%= rentalInfo[2].id %>">
+                    <h6 class="text-primary mb-2"><%= rentalInfo[2].propertyTitle %></h6>
+                </a>
                 <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="<%= rentalInfo[2].imageURL %>"
-                            class="card-img img-responsive" alt="..." style="height: 172px"></div>
-                    <div class="col-md-8 pl-4">
+                    <div class="col-4">
+                        <img src="<%= rentalInfo[2].imageURL %>" class="card-img img-home" alt="..."></div>
+                    <div class="col-8 pl-4">
                         <ul class="list-group">
                             <li class="list-group-item"><b>Estate:</b><%= rentalInfo[2].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[2].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[2].grossArea %> sq.ft</li>
                             <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[2].rent %></li>
                         </ul>
                     </div>
@@ -97,15 +102,16 @@
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <h6 class="text-primary mb-2"><%= rentalInfo[3].propertyTitle %></h6>
+                <a href="./details?id=<%= rentalInfo[3].id %>">
+                    <h6 class="text-primary mb-2"><%= rentalInfo[3].propertyTitle %></h6>
+                </a>
                 <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="<%= rentalInfo[3].imageURL %>"
-                            class="card-img img-responsive" alt="..." style="height: 172px"></div>
-                    <div class="col-md-8 pl-4">
+                    <div class="col-4">
+                        <img src="<%= rentalInfo[3].imageURL %>" class="card-img img-home" alt="..."></div>
+                    <div class="col-8 pl-4">
                         <ul class="list-group">
                             <li class="list-group-item"><b>Estate:</b><%= rentalInfo[3].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[3].grossArea %> sq feet</li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[3].grossArea %> sq.ft</li>
                             <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[3].rent %></li>
                         </ul>
                     </div>

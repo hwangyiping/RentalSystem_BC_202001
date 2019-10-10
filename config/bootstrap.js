@@ -27,7 +27,7 @@ module.exports.bootstrap = async function () {
   // ]);
   // ```
 
-  if (await RentalInfo.count({highlighted:'true'}) > 3) {
+  if (await RentalInfo.count({highlighted:'true'}) > 0) {
     return ;
   }
 

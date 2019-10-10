@@ -1,8 +1,9 @@
-/* .container{
-    padding-left: 0px;
-    padding-right: 0px;
+.img-home {
+    height: 148px;
+    object-fit: cover;
 }
 
-.row{
-    padding: 0px;
-} */
+.img-details {
+    height: 344px;
+    object-fit: cover;
+}
