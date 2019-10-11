@@ -22,8 +22,12 @@ module.exports.routes = {
   '/': { view: 'pages/homepage' },
   'GET /rentalInfo/home': 'RentalInfoController.home',
   'get /rentalInfo/create': { view: 'rentalInfo/create'},
-  // '/rentalInfo/details': { view: 'rentalInfo/details'},
   'GET /rentalInfo/details': 'RentalInfoController.details',
+  'get /rentalInfo/admin': 'RentalInfoController.admin',
+  'GET /rentalInfo/update': 'RentalInfoController.update',
+  'POST /rentalInfo/update': 'RentalInfoController.update',
+  'GET /rentalInfo/delete': 'RentalInfoController.delete',
+
 
 
   /***************************************************************************

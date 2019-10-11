@@ -1,0 +1,102 @@
+<!-- Narbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">RERS</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="./home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Search</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Create</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Admin</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-- Jumbotron -->
+<div class="row">
+    <div class="col-12">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Real Estate Rental System</h1>
+                <p class="lead">Real Estate Rental Management System is a web-based system to facilitate flatshare and
+                    finding roommates.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- checkbox -->
+<h3>Property Create Form</h3>
+<form action="/rentalInfo/update?id=<%= rentalInfo.id %>" method="POST">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label for="propertyTitle">Property title</label>
+                <input type="text" class="form-control" id="propertyTitle" name="RentalInfo[propertyTitle]"
+                    value="<%= rentalInfo.propertyTitle %>">
+            </div>
+            <div class="form-group">
+                <label for="estate">Estate:</label>
+                <select class="form-control" id="estate" name="RentalInfo[estate]">
+                    <option>Festival City</option>
+                    <option>Tin Ma Court</option>
+                    <option>City One Shatin</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="grossArea">Gross Area:</label>
+                <input type="number" min="1" class="form-control" id="grossArea" name="RentalInfo[grossArea]"
+                    value="<%= rentalInfo.grossArea %>">
+            </div>
+            <div class="form-group">
+                <label for="rent">Rent:</label>
+                <input type="number" min="1" class="form-control" id="rent" name="RentalInfo[rent]"
+                    value="<%= rentalInfo.rent %>">
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="form-group">
+                <label for="imageURL">Image URL:</label>
+                <input type="text" class="form-control" id="imageURL" name="RentalInfo[imageURL]"
+                    value="<%= rentalInfo.imageURL %>">
+            </div>
+            <div class="form-group">
+                <label for="bedrooms">Bedrooms:</label>
+                <input type="number" min="1" class="form-control" id="bedrooms" name="RentalInfo[bedrooms]"
+                    value="<%= rentalInfo.bedrooms %>">
+            </div>
+            <div class="form-group">
+                <label for="expectedTenants">Expected Tenants:</label>
+                <input type="number" min="1" class="form-control" id="expectedTenants"
+                    name="RentalInfo[expectedTenants]" value="<%= rentalInfo.expectedTenants %>">
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="true" id="highlighted" name="RentalInfo[highlighted]"
+                        checked=<%= rentalInfo.highlighted %>>
+                    Highlighted Property
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">&nbspSubmit&nbsp</button>
+            <!-- <button type="button" class="btn btn-danger" onclick="deleteData()">&nbspDelete&nbsp</button> -->
+        </div>
+    </div>
+</form>
+<!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
+</script>
+<script>
+    function deleteData() {
+        let id = 5;
+        $.get("rentalInfo/delete",id);
+    }
+</script> -->
