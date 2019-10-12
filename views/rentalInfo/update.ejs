@@ -88,15 +88,13 @@
                 </label>
             </div>
             <button type="submit" class="btn btn-primary">&nbspSubmit&nbsp</button>
-            <!-- <button type="button" class="btn btn-danger" onclick="deleteData()">&nbspDelete&nbsp</button> -->
+            <button type="button" class="btn btn-danger" onclick="deleteData(this)" data-id="<%= rentalInfo.id %>">&nbspDelete&nbsp</button>
         </div>
     </div>
 </form>
-<!-- <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js">
-</script>
 <script>
-    function deleteData() {
-        let id = 5;
-        $.get("rentalInfo/delete",id);
-    }
-</script> -->
+    function deleteData(elem) {
+        let dataid = $(elem).attr("data-id");
+        $.get("delete",{ id: dataid});
+    };
+</script>

@@ -67,12 +67,10 @@ module.exports = {
 
         }
     },
-    // delete: async function (req, res) {
-    //     let models = await RentalInfo.destroy(req.query.id).fetch();
-
-    //     if (models.length == 0) return res.notFound();
-
-    //     return res.ok("Rental Deleted.");
-    // }
+    delete: async function (req, res) {
+        let models = await RentalInfo.destroy(req.query.id).fetch();
+        if (models.length == 0) return res.notFound();
+        return res.ok("Record Deleted");
+    }
 };
 

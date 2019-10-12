@@ -12,11 +12,48 @@
                             <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo.rent %></li>
                             <li class="list-group-item"><b>Badrooms:</b><%= rentalInfo.bedrooms %></li>
                             <li class="list-group-item"><b>Expected Tenants:</b><%= rentalInfo.expectedTenants %></li>
-                            <li class="list-group-item"><b>Created:</b><%= rentalInfo.createdAt %></li>
-                            <li class="list-group-item"><b>Updated:</b><%= rentalInfo.updatedAt %></li>
+                            <li class="list-group-item" id="createdTime"><b>Created:</b>
+                                <div style="display: inline;"><%= rentalInfo.createdAt %></div>
+                            </li>
+                            <li class="list-group-item" id="updatedAt"><b>Updated:</b>
+                                <div style="display: inline;"><%= rentalInfo.updatedAt %></div>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        let createdTime = $("#createdTime div").text();
+        let updatedTime = $("#updatedAt div").text();
+        let ct = getMyDate(createdTime);
+        let ut = getMyDate(updatedTime);
+        console.log(ct, ut);
+        $("#createdTime div").text(ct);
+        $("#updatedAt div").text(ut);
+
+        
+    });
+    function getMyDate(str) {
+        let time = parseInt(str);
+        var oDate = new Date(time),
+            oYear = oDate.getFullYear(),
+            oMonth = oDate.getMonth() + 1,
+            oDay = oDate.getDate();
+        var oHour = oDate.getHours(),
+            oMin = oDate.getMinutes(),
+            oSen = oDate.getSeconds(), 
+            oTime = getzf(oMonth) + '/' + getzf(oDay) + '/' + getzf(oYear);
+        return oTime;
+    };
+    function getzf(num) {
+        if (parseInt(num) < 10) {
+            num = '0' + num;
+        }
+        return num;
+    };
+</script>
