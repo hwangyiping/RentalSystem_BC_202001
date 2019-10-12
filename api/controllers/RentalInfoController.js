@@ -71,6 +71,9 @@ module.exports = {
         let models = await RentalInfo.destroy(req.query.id).fetch();
         if (models.length == 0) return res.notFound();
         return res.ok("Record Deleted");
-    }
+    },
+    search: function (req, res){
+        return res.view('rentalInfo/search');
+    },
 };
 
