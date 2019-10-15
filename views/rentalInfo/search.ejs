@@ -39,38 +39,50 @@
 <!-- Search fields -->
 <!-- Large devices (desktops, 992px and up) -->
 <div class="row large no-gutters">
-    <div class="col-4">
-        <div class="card">
-            <img src="/images/1.png" class="card-img-top img-search px-3" alt="...">
-            <div class="card-body px-4">
-                <h6 class="text-primary">沙田第一城</h6>
-                <ul class="list-group">
-                    <li class="list-group-item"><b>Estate:</b>City One Shatin</li>
-                    <li class="list-group-item"><b>Gross Area:</b>900 sq.ft</li>
-                    <li class="list-group-item"><b>Rent:</b>$25000</li>
-                </ul>
+    <div class="col-8 row">
+        <% rentalInfo.forEach( function(model) { %>
+        <div class="col-6">
+            <div class="card">
+                <div class="px-4 py-3">
+                    <a href="./details?id=<%= model.id %>">
+                        <h6 class="text-primary mb-2"><%= model.propertyTitle %></h6>
+                    </a>
+                    <div class="row no-gutters">
+                        <div class="col-4">
+                            <img src="<%= model.imageURL %>" class="card-img img-home" alt="..."></div>
+                        <div class="col-8 pl-4">
+                            <ul class="list-group">
+                                <li class="list-group-item"><b>Estate:</b><%= model.estate %></li>
+                                <li class="list-group-item"><b>Gross Area:</b><%= model.grossArea %> sq.ft</li>
+                                <li class="list-group-item"><b>Rent:</b>$<%= model.rent %></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <% }); %>
     </div>
-
-    <div class="col-4">
-        <div class="card">
-            <img src="/images/2.png" class="card-img-top img-search px-3" alt="...">
-            <div class="card-body px-4">
-                <h6 class="text-primary">沙田第一城</h6>
-                <ul class="list-group">
-                    <li class="list-group-item"><b>Estate:</b>City One Shatin</li>
-                    <li class="list-group-item"><b>Gross Area:</b>900 sq.ft</li>
-                    <li class="list-group-item"><b>Rent:</b>$25000</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
     <div class="col-4 pl-2">
         <!-- paginate -->
+        <% const current = parseInt(req.query.page) || 1; %>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="/rentalInfo/search/?page=<%= Math.max(current-1, 1) %>">Previous</a>
+                </li>
 
+                <% for (i = 1; i <= count; i++) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/rentalInfo/search/?page=<%= i %>"><%= i %></a>
+                </li>
+                <% } %>
 
+                <li class="page-item">
+                    <a class="page-link" href="/rentalInfo/search/?page=<%= Math.min(current+1, count) %>">Next</a>
+                </li>
+            </ul>
+        </nav>
         <!-- search fields -->
         <h3>Property Search</h3>
         <form>
@@ -87,7 +99,41 @@
                 <label class="col-3 col-form-label" for="bedrooms">Bedrooms:</label>
                 <input type="number" min="1" class="form-control col-9" id="bedrooms" name="RentalInfo[bedrooms]">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <label>Area (Sq feet):</label>
+            <div class="row no-gutters">
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="areaMin">Min:</label>
+                    <div class="col-9 pl-2">
+                        <input type="number" min="1" class="form-control smallInput" id="areaMin" style="width: 5em;"
+                            name="RentalInfo[area]">
+                    </div>
+                </div>
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="areaMax">Max:</label>
+                    <div class="col-9">
+                        <input type="number" min="1" class="form-control" id="areaMax" style="width: 5em;"
+                            name="RentalInfo[area]">
+                    </div>
+                </div>
+            </div>
+            <label>Rant (HK$):</label>
+            <div class="row no-gutters">
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="rantMin">Min:</label>
+                    <div class="col-9 pl-2">
+                        <input type="number" min="1" class="form-control smallInput" id="rantMin" style="width: 5em;"
+                            name="RentalInfo[bedrooms]">
+                    </div>
+                </div>
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="rantMax">Max:</label>
+                    <div class="col-9">
+                        <input type="number" min="1" class="form-control" id="rantMax" style="width: 5em;"
+                            name="RentalInfo[rant]">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
         </form>
     </div>
 </div>

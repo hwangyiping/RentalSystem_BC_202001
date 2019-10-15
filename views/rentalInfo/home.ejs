@@ -38,86 +38,26 @@
 </div>
 <!-- Card -->
 <div class="row no-gutters">
+    <% rentalInfo.forEach( function(model) { %>
     <div class="col-md-6 col-xs-12">
         <div class="card">
             <div class="px-4 py-3">
-                <a href="./details?id=<%= rentalInfo[0].id %>">
-                    <h6 class="text-primary mb-2"><%= rentalInfo[0].propertyTitle %></h6>
+                <a href="./details?id=<%= model.id %>">
+                    <h6 class="text-primary mb-2"><%= model.propertyTitle %></h6>
                 </a>
                 <div class="row no-gutters">
                     <div class="col-4">
-                        <img src="<%= rentalInfo[0].imageURL %>" class="card-img img-home" alt="..."></div>
+                        <img src="<%= model.imageURL %>" class="card-img img-home" alt="..."></div>
                     <div class="col-8 pl-4">
                         <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[0].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[0].grossArea %> sq.ft</li>
-                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[0].rent %></li>
+                            <li class="list-group-item"><b>Estate:</b><%= model.estate %></li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= model.grossArea %> sq.ft</li>
+                            <li class="list-group-item"><b>Rent:</b>$<%= model.rent %></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="col-md-6 col-xs-12">
-        <div class="card">
-            <div class="px-4 py-3">
-                <a href="./details?id=<%= rentalInfo[1].id %>">
-                    <h6 class="text-primary mb-2"><%= rentalInfo[1].propertyTitle %></h6>
-                </a>
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <img src="<%= rentalInfo[1].imageURL %>" class="card-img img-home" alt="..."></div>
-                    <div class="col-8 pl-4">
-                        <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[1].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[1].grossArea %> sq.ft</li>
-                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[1].rent %></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xs-12">
-        <div class="card">
-            <div class="px-4 py-3">
-                <a href="./details?id=<%= rentalInfo[2].id %>">
-                    <h6 class="text-primary mb-2"><%= rentalInfo[2].propertyTitle %></h6>
-                </a>
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <img src="<%= rentalInfo[2].imageURL %>" class="card-img img-home" alt="..."></div>
-                    <div class="col-8 pl-4">
-                        <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[2].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[2].grossArea %> sq.ft</li>
-                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[2].rent %></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 col-xs-12">
-        <div class="card">
-            <div class="px-4 py-3">
-                <a href="./details?id=<%= rentalInfo[3].id %>">
-                    <h6 class="text-primary mb-2"><%= rentalInfo[3].propertyTitle %></h6>
-                </a>
-                <div class="row no-gutters">
-                    <div class="col-4">
-                        <img src="<%= rentalInfo[3].imageURL %>" class="card-img img-home" alt="..."></div>
-                    <div class="col-8 pl-4">
-                        <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b><%= rentalInfo[3].estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= rentalInfo[3].grossArea %> sq.ft</li>
-                            <li class="list-group-item"><b>Rent:</b>$<%= rentalInfo[3].rent %></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+    <% }); %>
 </div>

@@ -72,8 +72,27 @@ module.exports = {
         if (models.length == 0) return res.notFound();
         return res.ok("Record Deleted");
     },
-    search: function (req, res){
-        return res.view('rentalInfo/search');
+    // search: function (req, res) {
+    //     return res.view('rentalInfo/search');
+    // },
+    search: async function (req, res) {
+        if (req.method == "GET") {
+            const qPage = Math.max(req.query.page - 1, 0) || 0;
+
+            const numOfItemsPerPage = 2;
+
+            var models = await RentalInfo.find({
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
+            });
+
+            var numOfPage = Math.ceil(await RentalInfo.count() / numOfItemsPerPage);
+
+            return res.view('rentalInfo/search', { rentalInfo: models, count: numOfPage });
+        }
+        else {
+
+        }
     },
 };
 
