@@ -5,6 +5,8 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
+ var isSearch = false;
+
 module.exports = {
     home: async function (req, res) {
         let models = await RentalInfo.find({ where: { highlighted: 'true' }, limit: 4, sort: 'createdAt DESC' });
@@ -64,7 +66,6 @@ module.exports = {
             if (models.length == 0) return res.notFound();
 
             return res.ok("Record updated");
-
         }
     },
     delete: async function (req, res) {
@@ -72,27 +73,46 @@ module.exports = {
         if (models.length == 0) return res.notFound();
         return res.ok("Record Deleted");
     },
-    // search: function (req, res) {
-    //     return res.view('rentalInfo/search');
-    // },
     search: async function (req, res) {
-        if (req.method == "GET") {
-            const qPage = Math.max(req.query.page - 1, 0) || 0;
-
-            const numOfItemsPerPage = 2;
-
-            var models = await RentalInfo.find({
+        // var type = req.body.type || 500;
+        
+        const qPage = Math.max(req.query.page - 1, 0) || 0;
+        const numOfItemsPerPage = 2;
+        
+        if (req.method == "GET" && !isSearch) {
+            searchModels = await RentalInfo.find({
                 limit: numOfItemsPerPage,
                 skip: numOfItemsPerPage * qPage
             });
-
-            var numOfPage = Math.ceil(await RentalInfo.count() / numOfItemsPerPage);
-
-            return res.view('rentalInfo/search', { rentalInfo: models, count: numOfPage });
+        } else if (req.method == "POST") {
+            var estate = req.body.RentalInfo.estate,
+                bedrooms = req.body.RentalInfo.bedrooms,
+                areaMin = req.body.RentalInfo.areaMin,
+                areaMax = req.body.RentalInfo.areaMax,
+                rentMin = req.body.RentalInfo.rentMin,
+                rentMax = req.body.RentalInfo.rentMax;
+            searchModels = await RentalInfo.find({
+                where: {
+                    estate: estate,
+                    bedrooms: bedrooms,
+                    and: [
+                        {area: {'>=': areaMin}},
+                        {area: {'<=': areaMax}},
+                    ],
+                    and: [
+                        {rent: {'>=': rentMin}},
+                        {rent: {'<=': rentMax}},
+                    ],
+                },
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
+            });
+            isSearch = true;
         }
-        else {
+        var numOfPage = Math.ceil(await RentalInfo.count() / numOfItemsPerPage);
 
-        }
+        return res.view('rentalInfo/search', { rentalInfo: searchModels, count: numOfPage });
+
     },
 };
 
