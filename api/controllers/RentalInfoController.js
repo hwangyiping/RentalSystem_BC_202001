@@ -74,7 +74,6 @@ module.exports = {
         return res.ok("Record Deleted");
     },
     search: async function (req, res) {
-        // var type = req.body.type || 500;
         
         const qPage = Math.max(req.query.page - 1, 0) || 0;
         const numOfItemsPerPage = 2;

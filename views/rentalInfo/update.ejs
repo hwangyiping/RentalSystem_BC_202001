@@ -88,13 +88,10 @@
                 </label>
             </div>
             <button type="submit" class="btn btn-primary">&nbspSubmit&nbsp</button>
-            <button type="button" class="btn btn-danger" onclick="deleteData(this)" data-id="<%= rentalInfo.id %>">&nbspDelete&nbsp</button>
         </div>
     </div>
 </form>
-<script>
-    function deleteData(elem) {
-        let dataid = $(elem).attr("data-id");
-        $.get("delete",{ id: dataid});
-    };
-</script>
+<form action="/rentalInfo/delete" method="GET">
+    <input type="hidden" name="id" value="<%= rentalInfo.id %>">
+    <button type="submit" class="btn btn-danger">&nbspDelete&nbsp</button>
+</form>
