@@ -5,7 +5,7 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
- var isSearch = false;
+var isSearch = false;
 
 module.exports = {
     home: async function (req, res) {
@@ -74,26 +74,29 @@ module.exports = {
         return res.ok("Record Deleted");
     },
     search: async function (req, res) {
-        
+
         const qPage = Math.max(req.query.page - 1, 0) || 0;
         const numOfItemsPerPage = 2;
-        
+
         if (req.method == "GET" && !isSearch) {
             searchModels = await RentalInfo.find({
                 limit: numOfItemsPerPage,
                 skip: numOfItemsPerPage * qPage
             });
         } else if (req.method == "POST") {
+            console.log("tijiao");
             var estate = req.body.RentalInfo.estate,
                 bedrooms = req.body.RentalInfo.bedrooms,
-                areaMin = req.body.RentalInfo.areaMin,
-                areaMax = req.body.RentalInfo.areaMax,
-                rentMin = req.body.RentalInfo.rentMin,
-                rentMax = req.body.RentalInfo.rentMax;
+                areaMin = req.body.RentalInfo.areaMin || 0,
+                areaMax = req.body.RentalInfo.areaMax || Number.MAX_SAFE_INTEGER,
+                rentMin = req.body.RentalInfo.rentMin || 0,
+                rentMax = req.body.RentalInfo.rentMax || Number.MAX_SAFE_INTEGER;
             searchModels = await RentalInfo.find({
                 where: {
-                    estate: estate,
-                    bedrooms: bedrooms,
+                    or: [
+                        {estate: estate},
+                        {bedrooms: bedrooms}
+                    ],
                     and: [
                         {area: {'>=': areaMin}},
                         {area: {'<=': areaMax}},
@@ -106,6 +109,7 @@ module.exports = {
                 limit: numOfItemsPerPage,
                 skip: numOfItemsPerPage * qPage
             });
+            console.log(searchModels);
             isSearch = true;
         }
         var numOfPage = Math.ceil(await RentalInfo.count() / numOfItemsPerPage);

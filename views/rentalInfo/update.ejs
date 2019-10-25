@@ -43,11 +43,11 @@
             <div class="form-group">
                 <label for="propertyTitle">Property title</label>
                 <input type="text" class="form-control" id="propertyTitle" name="RentalInfo[propertyTitle]"
-                    value="<%= rentalInfo.propertyTitle %>">
+                    value="<%= rentalInfo.propertyTitle %>" required>
             </div>
             <div class="form-group">
                 <label for="estate">Estate:</label>
-                <select class="form-control" id="estate" name="RentalInfo[estate]">
+                <select class="form-control" id="estateId"  name="RentalInfo[estate]" value="<%= rentalInfo.estate %>">
                     <option>Festival City</option>
                     <option>Tin Ma Court</option>
                     <option>City One Shatin</option>
@@ -55,35 +55,35 @@
             </div>
             <div class="form-group">
                 <label for="grossArea">Gross Area:</label>
-                <input type="number" min="1" class="form-control" id="grossArea" name="RentalInfo[grossArea]"
-                    value="<%= rentalInfo.grossArea %>">
+                <input type="number" min="0" class="form-control" id="grossArea" name="RentalInfo[grossArea]"
+                    value="<%= rentalInfo.grossArea %>" required>
             </div>
             <div class="form-group">
                 <label for="rent">Rent:</label>
-                <input type="number" min="1" class="form-control" id="rent" name="RentalInfo[rent]"
-                    value="<%= rentalInfo.rent %>">
+                <input type="number" min="0" class="form-control" id="rent" name="RentalInfo[rent]"
+                    value="<%= rentalInfo.rent %>" required>
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <label for="imageURL">Image URL:</label>
                 <input type="text" class="form-control" id="imageURL" name="RentalInfo[imageURL]"
-                    value="<%= rentalInfo.imageURL %>">
+                    value="<%= rentalInfo.imageURL %>" required>
             </div>
             <div class="form-group">
                 <label for="bedrooms">Bedrooms:</label>
-                <input type="number" min="1" class="form-control" id="bedrooms" name="RentalInfo[bedrooms]"
-                    value="<%= rentalInfo.bedrooms %>">
+                <input type="number" min="0" class="form-control" id="bedrooms" name="RentalInfo[bedrooms]"
+                    value="<%= rentalInfo.bedrooms %>" required>
             </div>
             <div class="form-group">
                 <label for="expectedTenants">Expected Tenants:</label>
-                <input type="number" min="1" class="form-control" id="expectedTenants"
-                    name="RentalInfo[expectedTenants]" value="<%= rentalInfo.expectedTenants %>">
+                <input type="number" min="0" class="form-control" id="expectedTenants"
+                    name="RentalInfo[expectedTenants]" value="<%= rentalInfo.expectedTenants %>" required>
             </div>
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="true" id="highlighted" name="RentalInfo[highlighted]"
-                        checked=<%= rentalInfo.highlighted %>>
+                    <input id='checkbox' type="checkbox" value="true" id="highlighted" name="RentalInfo[highlighted]"
+                        value="<%= rentalInfo.highlighted %>">
                     Highlighted Property
                 </label>
             </div>
@@ -95,3 +95,15 @@
     <input type="hidden" name="id" value="<%= rentalInfo.id %>">
     <button type="submit" class="btn btn-danger">&nbspDelete&nbsp</button>
 </form>
+<script>
+window.onload=function(){
+    var check=document.getElementById('checkbox').value;
+    var selector=document.getElementById('estateId').attributes.value.value;
+    $('#estateId').val(selector);
+    if(check=="true"){
+        $('#checkbox').prop("checked",true);
+    }else{
+        $('#checkbox').prop("checked",false);
+    }
+}
+</script>

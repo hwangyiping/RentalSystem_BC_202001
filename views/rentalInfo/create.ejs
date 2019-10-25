@@ -42,7 +42,7 @@
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <label for="propertyTitle">Property title:</label>
-                <input type="text" class="form-control" id="propertyTitle" name="RentalInfo[propertyTitle]">
+                <input type="text" class="form-control" id="propertyTitle" name="RentalInfo[propertyTitle]" required>
             </div>
             <div class="form-group">
                 <label for="estate">Estate:</label>
@@ -54,25 +54,25 @@
             </div>
             <div class="form-group">
                 <label for="grossArea">Gross Area:</label>
-                <input type="number" min="1" class="form-control" id="grossArea" name="RentalInfo[grossArea]">
+                <input type="number" min="0" class="form-control" id="grossArea" name="RentalInfo[grossArea]" required>
             </div>
             <div class="form-group">
                 <label for="rent">Rent:</label>
-                <input type="number" min="1" class="form-control" id="rent" name="RentalInfo[rent]">
+                <input type="number" min="0" class="form-control" id="rent" name="RentalInfo[rent]" required>
             </div>
         </div>
         <div class="col-md-6 col-sm-12">
             <div class="form-group">
                 <label for="imageURL">Image URL:</label>
-                <input type="text" class="form-control" id="imageURL" name="RentalInfo[imageURL]">
+                <input type="text" class="form-control" id="imageURL" name="RentalInfo[imageURL]" required>
             </div>
             <div class="form-group">
                 <label for="bedrooms">Bedrooms:</label>
-                <input type="number" min="1" class="form-control" id="bedrooms" name="RentalInfo[bedrooms]">
+                <input type="number" min="0" class="form-control" id="bedrooms" name="RentalInfo[bedrooms]"required>
             </div>
             <div class="form-group">
                 <label for="expectedTenants">Expected Tenants:</label>
-                <input type="number" min="1" class="form-control" id="expectedTenants" name="RentalInfo[expectedTenants]">
+                <input type="number" min="0" class="form-control" id="expectedTenants" name="RentalInfo[expectedTenants]" required>
             </div>
             <div class="checkbox">
                 <label>
