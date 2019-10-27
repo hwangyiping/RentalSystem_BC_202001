@@ -5,7 +5,10 @@
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
 
-var isSearch = false;
+var type = 0;
+var searchCount = 0;
+var searchModels;
+var estate, bedrooms, areaMin, areaMax, rentMin, rentMax;
 
 module.exports = {
     home: async function (req, res) {
@@ -78,13 +81,28 @@ module.exports = {
         const qPage = Math.max(req.query.page - 1, 0) || 0;
         const numOfItemsPerPage = 2;
 
-        if (req.method == "GET" && !isSearch) {
+        if (req.method == "GET" && type == 2) {
+            numOfPage = Math.ceil(searchCount / numOfItemsPerPage);
             searchModels = await RentalInfo.find({
+                where: {
+                    or: [
+                        { estate: estate },
+                        { bedrooms: bedrooms }
+                    ],
+                    and: [
+                        { area: { '>=': areaMin } },
+                        { area: { '<=': areaMax } },
+                    ],
+                    and: [
+                        { rent: { '>=': rentMin } },
+                        { rent: { '<=': rentMax } },
+                    ],
+                },
                 limit: numOfItemsPerPage,
                 skip: numOfItemsPerPage * qPage
             });
         } else if (req.method == "POST") {
-            var estate = req.body.RentalInfo.estate,
+            estate = req.body.RentalInfo.estate,
                 bedrooms = req.body.RentalInfo.bedrooms,
                 areaMin = req.body.RentalInfo.areaMin || 0,
                 areaMax = req.body.RentalInfo.areaMax || Number.MAX_SAFE_INTEGER,
@@ -93,25 +111,47 @@ module.exports = {
             searchModels = await RentalInfo.find({
                 where: {
                     or: [
-                        {estate: estate},
-                        {bedrooms: bedrooms}
+                        { estate: estate },
+                        { bedrooms: bedrooms }
                     ],
                     and: [
-                        {area: {'>=': areaMin}},
-                        {area: {'<=': areaMax}},
+                        { area: { '>=': areaMin } },
+                        { area: { '<=': areaMax } },
                     ],
                     and: [
-                        {rent: {'>=': rentMin}},
-                        {rent: {'<=': rentMax}},
+                        { rent: { '>=': rentMin } },
+                        { rent: { '<=': rentMax } },
                     ],
                 },
                 limit: numOfItemsPerPage,
                 skip: numOfItemsPerPage * qPage
             });
-            isSearch = true;
+            searchCount = await RentalInfo.count({
+                where: {
+                    or: [
+                        { estate: estate },
+                        { bedrooms: bedrooms }
+                    ],
+                    and: [
+                        { area: { '>=': areaMin } },
+                        { area: { '<=': areaMax } },
+                    ],
+                    and: [
+                        { rent: { '>=': rentMin } },
+                        { rent: { '<=': rentMax } },
+                    ],
+                }
+            });
+            type = 2;
+            numOfPage = Math.ceil(searchCount / numOfItemsPerPage);
+        } else {
+            type = 0;
+            searchModels = await RentalInfo.find({
+                limit: numOfItemsPerPage,
+                skip: numOfItemsPerPage * qPage
+            });
+            numOfPage = Math.ceil(await RentalInfo.count() / numOfItemsPerPage);
         }
-        var numOfPage = Math.ceil(await RentalInfo.count() / numOfItemsPerPage);
-
         return res.view('rentalInfo/search', { rentalInfo: searchModels, count: numOfPage });
 
     },

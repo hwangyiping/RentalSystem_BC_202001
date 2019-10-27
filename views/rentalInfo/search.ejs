@@ -37,197 +37,97 @@
     </div>
 </div>
 <!-- Search fields -->
-<!-- Large devices (desktops, 992px and up)  -->
-<div class="large">
-    <div class="row no-gutters">
-        <div class="col-8 row no-gutters">
-            <% rentalInfo.forEach( function(model) { %>
-            <div class="col-6">
-                <div class="card">
-                    <img src="<%= model.imageURL %>" class="card-img-top img-search px-3" alt="…">
-                    <div class="card-body px-4">
-                        <h6 class="text-primary"><%= model.propertyTitle %></h6>
-                        <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b><%= model.estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= model.grossArea %> sq.ft</li>
-                            <li class="list-group-item"><b>Rent:</b>$<%= model.rent %></li>
-                        </ul>
-                    </div>
+<div class="row no-gutters">
+    <div class="col-md-8 col-sm-6 row no-gutters">
+        <% rentalInfo.forEach( function(model) { %>
+        <div class="col-md-6 col-sm-12">
+            <div class="card">
+                <img src="<%= model.imageURL %>" class="card-img-top img-search px-3" alt="…">
+                <div class="card-body px-4">
+                    <h6 class="text-primary"><%= model.propertyTitle %></h6>
+                    <ul class="list-group">
+                        <li class="list-group-item"><b>Estate:</b><%= model.estate %></li>
+                        <li class="list-group-item"><b>Gross Area:</b><%= model.grossArea %> sq.ft</li>
+                        <li class="list-group-item"><b>Rent:</b>$<%= model.rent %></li>
+                    </ul>
                 </div>
             </div>
-            <% }); %>
         </div>
-
-
-        <div class="col-4 pl-2">
-            <!-- paginate -->
-            <% const current1 = parseInt(req.query.page) || 1; %>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="/rentalInfo/search/?page=<%= Math.max(current1-1, 1) %>">Previous</a>
-                    </li>
-
-                    <% for (i = 1; i <= count; i++) { %>
-                    <li class="page-item">
-                        <a class="page-link" href="/rentalInfo/search/?page=<%= i %>"><%= i %></a>
-                    </li>
-                    <% } %>
-
-                    <li class="page-item">
-                        <a class="page-link" href="/rentalInfo/search/?page=<%= Math.min(current1+1, count) %>">Next</a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- search fields -->
-            <h3>Property Search</h3>
-            <form action="/rentalInfo/search" method="POST">
-                <div class="form-group row">
-                    <label class="col-3 col-form-label" for="estate">Estate:</label>
-                    <select class="form-control col-9" id="estate" name="RentalInfo[estate]">
-                        <option selected>Select estate here</option>
-                        <option>Festival City</option>
-                        <option>Tin Ma Court</option>
-                        <option>City One Shatin</option>
-                    </select>
-                </div>
-                <div class="form-group row">
-                    <label class="col-3 col-form-label" for="bedrooms">Bedrooms:</label>
-                    <input type="number" min="0" class="form-control col-9" id="bedrooms" name="RentalInfo[bedrooms]">
-                </div>
-                <label>Area (Sq feet):</label>
-                <div class="row no-gutters">
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="areaMin">Min:</label>
-                        <div class="col-9 pl-2">
-                            <input type="number" min="0" class="form-control smallInput" id="areaMin"
-                                style="width: 5em;" name="RentalInfo[areaMin]">
-                        </div>
-                    </div>
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="areaMax">Max:</label>
-                        <div class="col-9">
-                            <input type="number" min="0" class="form-control" id="areaMax" style="width: 5em;"
-                                name="RentalInfo[areaMax]">
-                        </div>
-                    </div>
-                </div>
-                <label>Rent (HK$):</label>
-                <div class="row no-gutters">
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="rantMin">Min:</label>
-                        <div class="col-9 pl-2">
-                            <input type="number" min="0" class="form-control smallInput" id="rentMin"
-                                style="width: 5em;" name="RentalInfo[rentMin]">
-                        </div>
-                    </div>
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="rantMax">Max:</label>
-                        <div class="col-9">
-                            <input type="number" min="0" class="form-control" id="rentMax" style="width: 5em;"
-                                name="RentalInfo[rentMax]">
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
+        <% }); %>
     </div>
-</div>
-<!-- Small devices (landscape phones, 576px and up) -->
-<div class="small">
-    <div class="row no-gutters">
-        <div class="col-12">
-            <!-- paginate -->
-            <% const current = parseInt(req.query.page) || 1; %>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="/rentalInfo/search/?page=<%= Math.max(current-1, 1) %>">Previous</a>
-                    </li>
 
-                    <% for (i = 1; i <= count; i++) { %>
-                    <li class="page-item">
-                        <a class="page-link" href="/rentalInfo/search/?page=<%= i %>"><%= i %></a>
-                    </li>
-                    <% } %>
 
-                    <li class="page-item">
-                        <a class="page-link" href="/rentalInfo/search/?page=<%= Math.min(current+1, count) %>">Next</a>
-                    </li>
-                </ul>
-            </nav>
-            <!-- search fields -->
-            <h3>Property Search</h3>
-            <form action="/rentalInfo/search" method="POST">
-                <div class="form-group row">
-                    <label class="col-3 col-form-label" for="estate">Estate:</label>
-                    <select class="form-control col-9" id="estate" name="RentalInfo[estate]" required>
-                        <option selected>Select estate here</option>
-                        <option>Festival City</option>
-                        <option>Tin Ma Court</option>
-                        <option>City One Shatin</option>
-                    </select>
-                </div>
-                <div class="form-group row">
-                    <label class="col-3 col-form-label" for="bedrooms">Bedrooms:</label>
-                    <input type="number" min="0" class="form-control col-9" id="bedrooms" name="RentalInfo[bedrooms]"
-                        required>
-                </div>
-                <label>Area (Sq feet):</label>
-                <div class="row no-gutters">
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="areaMin">Min:</label>
-                        <div class="col-9 pl-2">
-                            <input type="number" min="0" class="form-control smallInput" id="areaMin"
-                                style="width: 5em;" name="RentalInfo[areaMin]" required>
-                        </div>
-                    </div>
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="areaMax">Max:</label>
-                        <div class="col-9">
-                            <input type="number" min="0" class="form-control" id="areaMax" style="width: 5em;"
-                                name="RentalInfo[areaMax]" required>
-                        </div>
-                    </div>
-                </div>
-                <label>Rent (HK$):</label>
-                <div class="row no-gutters">
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="rantMin">Min:</label>
-                        <div class="col-9 pl-2">
-                            <input type="number" min="0" class="form-control smallInput" id="rentMin"
-                                style="width: 5em;" name="RentalInfo[rentMin]" required>
-                        </div>
-                    </div>
-                    <div class="form-group col-6 row no-gutters">
-                        <label class="col-form-label col-3" for="rantMax">Max:</label>
-                        <div class="col-9">
-                            <input type="number" min="0" class="form-control" id="rentMax" style="width: 5em;"
-                                name="RentalInfo[rentMax]" required>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Search</button>
-            </form>
-        </div>
+    <div class="col-md-4 col-sm-12 pl-2">
+        <!-- paginate -->
+        <% const current1 = parseInt(req.query.page) || 1; %>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="/rentalInfo/search/?page=<%= Math.max(current1-1, 1) %>">Previous</a>
+                </li>
 
-        <div class="col-12 row no-gutters">
-            <% rentalInfo.forEach( function(model) { %>
-            <div class="col-12">
-                <div class="card">
-                    <img src="<%= model.imageURL %>" class="card-img-top img-search px-3" alt="…">
-                    <div class="card-body px-4">
-                        <h6 class="text-primary"><%= model.propertyTitle %></h6>
-                        <ul class="list-group">
-                            <li class="list-group-item"><b>Estate:</b><%= model.estate %></li>
-                            <li class="list-group-item"><b>Gross Area:</b><%= model.grossArea %> sq.ft</li>
-                            <li class="list-group-item"><b>Rent:</b>$<%= model.rent %></li>
-                        </ul>
+                <% for (i = 1; i <= count; i++) { %>
+                <li class="page-item">
+                    <a class="page-link" href="/rentalInfo/search/?page=<%= i %>"><%= i %></a>
+                </li>
+                <% } %>
+
+                <li class="page-item">
+                    <a class="page-link" href="/rentalInfo/search/?page=<%= Math.min(current1+1, count) %>">Next</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- search fields -->
+        <h3>Property Search</h3>
+        <form action="/rentalInfo/search" method="POST">
+            <div class="form-group row">
+                <label class="col-3 col-form-label" for="estate">Estate:</label>
+                <select class="form-control col-9" id="estate" name="RentalInfo[estate]">
+                    <option selected>Select estate here</option>
+                    <option>Festival City</option>
+                    <option>Tin Ma Court</option>
+                    <option>City One Shatin</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <label class="col-3 col-form-label" for="bedrooms">Bedrooms:</label>
+                <input type="number" min="0" class="form-control col-9" id="bedrooms" name="RentalInfo[bedrooms]">
+            </div>
+            <label>Area (Sq feet):</label>
+            <div class="row no-gutters">
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="areaMin">Min:</label>
+                    <div class="col-9 pl-2">
+                        <input type="number" min="0" class="form-control smallInput" id="areaMin" style="width: 5em;"
+                            name="RentalInfo[areaMin]">
+                    </div>
+                </div>
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="areaMax">Max:</label>
+                    <div class="col-9">
+                        <input type="number" min="0" class="form-control" id="areaMax" style="width: 5em;"
+                            name="RentalInfo[areaMax]">
                     </div>
                 </div>
             </div>
-            <% }); %>
-        </div>
+            <label>Rent (HK$):</label>
+            <div class="row no-gutters">
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="rantMin">Min:</label>
+                    <div class="col-9 pl-2">
+                        <input type="number" min="0" class="form-control smallInput" id="rentMin" style="width: 5em;"
+                            name="RentalInfo[rentMin]">
+                    </div>
+                </div>
+                <div class="form-group col-6 row no-gutters">
+                    <label class="col-form-label col-3" for="rantMax">Max:</label>
+                    <div class="col-9">
+                        <input type="number" min="0" class="form-control" id="rentMax" style="width: 5em;"
+                            name="RentalInfo[rentMax]">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
     </div>
 </div>
