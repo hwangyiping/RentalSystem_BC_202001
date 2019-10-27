@@ -85,13 +85,11 @@ module.exports = {
             numOfPage = Math.ceil(searchCount / numOfItemsPerPage);
             searchModels = await RentalInfo.find({
                 where: {
-                    or: [
-                        { estate: estate },
-                        { bedrooms: bedrooms }
-                    ],
+                    estate: estate ,
+                    bedrooms: bedrooms,
                     and: [
-                        { area: { '>=': areaMin } },
-                        { area: { '<=': areaMax } },
+                        { grossArea: { '>=': areaMin } },
+                        { grossArea: { '<=': areaMax } },
                     ],
                     and: [
                         { rent: { '>=': rentMin } },
@@ -110,13 +108,11 @@ module.exports = {
                 rentMax = req.body.RentalInfo.rentMax || Number.MAX_SAFE_INTEGER;
             searchModels = await RentalInfo.find({
                 where: {
-                    or: [
-                        { estate: estate },
-                        { bedrooms: bedrooms }
-                    ],
+                     estate: estate ,
+                     bedrooms: bedrooms,
                     and: [
-                        { area: { '>=': areaMin } },
-                        { area: { '<=': areaMax } },
+                        { grossArea: { '>=': areaMin } },
+                        { grossArea: { '<=': areaMax } },
                     ],
                     and: [
                         { rent: { '>=': rentMin } },
@@ -128,13 +124,11 @@ module.exports = {
             });
             searchCount = await RentalInfo.count({
                 where: {
-                    or: [
-                        { estate: estate },
-                        { bedrooms: bedrooms }
-                    ],
+                    estate: estate ,
+                    bedrooms: bedrooms,
                     and: [
-                        { area: { '>=': areaMin } },
-                        { area: { '<=': areaMax } },
+                        { grossArea: { '>=': areaMin } },
+                        { grossArea: { '<=': areaMax } },
                     ],
                     and: [
                         { rent: { '>=': rentMin } },
