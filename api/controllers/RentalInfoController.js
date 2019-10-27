@@ -84,7 +84,6 @@ module.exports = {
                 skip: numOfItemsPerPage * qPage
             });
         } else if (req.method == "POST") {
-            console.log("tijiao");
             var estate = req.body.RentalInfo.estate,
                 bedrooms = req.body.RentalInfo.bedrooms,
                 areaMin = req.body.RentalInfo.areaMin || 0,
@@ -109,7 +108,6 @@ module.exports = {
                 limit: numOfItemsPerPage,
                 skip: numOfItemsPerPage * qPage
             });
-            console.log(searchModels);
             isSearch = true;
         }
         var numOfPage = Math.ceil(await RentalInfo.count() / numOfItemsPerPage);
