@@ -20,6 +20,8 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/homepage' },
+
+  //rentalInfo
   'GET /rentalInfo/home': 'RentalInfoController.home',
   'get /rentalInfo/create': { view: 'rentalInfo/create'},
   'GET /rentalInfo/details': 'RentalInfoController.details',
@@ -29,6 +31,11 @@ module.exports.routes = {
   'GET /rentalInfo/delete': 'RentalInfoController.delete',
   'GET /rentalInfo/search': 'RentalInfoController.search',
   'POST /rentalInfo/search': 'RentalInfoController.search',
+
+  //user
+  'GET /user/login': 'UserController.login',
+  'POST /user/login': 'UserController.login',
+  'POST /user/logout': 'UserController.logout',
 
 
 

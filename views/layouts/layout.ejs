@@ -64,6 +64,11 @@
             <a class="nav-link" href="/rentalInfo/admin">Admin</a>
           </li>
         </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav float-right">
+            <li><a href="/user/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
+        </div>
       </div>
     </nav>
 
@@ -168,6 +173,10 @@
     title = '<%=req.path%>'.substring(12);
     title = title.charAt(0).toUpperCase() + title.slice(1);
     document.title = title;
+
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
+    })
   </script>
 </body>
 
