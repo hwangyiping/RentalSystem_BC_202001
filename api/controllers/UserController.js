@@ -10,7 +10,7 @@ module.exports = {
     login: async function (req, res) {
         if (req.method == "GET") return res.view('user/login');
 
-        if (!req.body.username || !req.body.password) return res.badRequest();
+        if (!req.body.username || !req.body.password) return res.status(400).send("Name and password cannot be empty");
 
         var user = await User.findOne({ username: req.body.username });
 
@@ -25,8 +25,6 @@ module.exports = {
             if (err) return res.serverError(err);
 
             req.session.username = req.body.username;
-
-            sails.log("[Session] ", req.session);
 
             return res.ok("Login successfully.");
 

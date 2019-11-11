@@ -64,11 +64,39 @@
             <a class="nav-link" href="/rentalInfo/admin">Admin</a>
           </li>
         </ul>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <ul class="navbar-nav float-right">
-            <li><a href="/user/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-          </ul>
+        <ul class="navbar-nav ml-auto">
+          <!-- <li id="isNotLogin"><a href="/user/login"> Login</a></li> -->
+          <!-- Button trigger modal -->
+          <div id="isNotLogin">
+          <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+            Login
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">User name</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" name="username">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+          <li id="isLogin">Hi,&nbsp;<%=req.session.username%>.&nbsp;(&nbsp;<span onclick="logout()">Logout</span>&nbsp;)
+          </li>
+        </ul>
       </div>
     </nav>
 
@@ -169,14 +197,50 @@
   <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
   </script>
   <script>
+    //title & nav active
     document.querySelector('a[href="<%=req.path%>"]').className += " active";
     title = '<%=req.path%>'.substring(12);
     title = title.charAt(0).toUpperCase() + title.slice(1);
     document.title = title;
 
-    $('#myModal').on('shown.bs.modal', function () {
-      $('#myInput').focus()
-    })
+    //isLogin?
+    if ("<%=req.session.username%>" == "")
+      $("#isLogin").hide();
+    else
+      $("#isNotLogin").hide();
+
+    //login
+    async function login() {
+      var username=$('#username').val();
+      var password=$('#password').val();
+      var response = await fetch("/user/login/", {
+          method: "POST",
+          body:JSON.stringify({username:username,password:password}),
+          credentials: 'same-origin',
+        });
+      var responseText = await response.text();
+      if(response.status != 200) alert(responseText);
+      else {alert(responseText);location.reload();}
+    }
+    
+    //logout
+    async function logout() {
+      var r = confirm("Confirm Logout?");
+
+      if (r) {
+
+        var response = await fetch("/user/logout/", {
+          method: "POST",
+          credentials: 'same-origin',
+        });
+
+        var html = await response.text();
+        alert(html);
+        location.reload();
+
+      }
+
+    };
   </script>
 </body>
 
