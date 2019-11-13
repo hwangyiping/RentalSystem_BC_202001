@@ -13,11 +13,19 @@ module.exports = {
     //  ╠═╝╠╦╝║║║║║ ║ ║╚╗╔╝║╣ ╚═╗
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     username: {
-      type: "string"
+      type: "string",
+      unique: true,
+      required: true
     },
     
     password: {
       type: "string"
+    },
+
+    role: {
+      type: 'string',
+      isIn: ['admin', 'client', 'visitor'],
+      defaultsTo: 'visitor'
     },
 
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
@@ -29,6 +37,10 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
+    rent: {
+      collection: 'RentalInfo',
+      via: 'rentedBy'
+    },
   },
 
 };

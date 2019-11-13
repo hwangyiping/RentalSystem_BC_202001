@@ -31,9 +31,20 @@ module.exports = {
     details: async function (req, res) {
 
         let reqid = req.query.id;
-        let reqdata = await RentalInfo.findOne({ where: { id: reqid } });
-
-        return res.view('rentalInfo/details', { rentalInfo: reqdata });
+        let reqdata = await RentalInfo.findOne({ id: reqid });
+        let userName = req.session.username;
+        if (!userName)
+            return res.view('rentalInfo/details', { rentalInfo: reqdata, isRenter: false });
+        else {
+            var model = await RentalInfo.findOne({ id: reqid }).populate("rentedBy");
+            var renterInfo = model.rentedBy;
+            var isRenter = false;
+            for (var i = 0, l = renterInfo.length; i < l; i++) {
+                if (userName == renterInfo[i]["username"])
+                    isRenter = true;
+            }
+            return res.view('rentalInfo/details', { rentalInfo: reqdata, isRenter: isRenter });
+        }
     },
     admin: async function (req, res) {
 
@@ -72,7 +83,7 @@ module.exports = {
         }
     },
     delete: async function (req, res) {
-        let models = await RentalInfo.destroy(req.query.id).fetch();
+        let models = await RentalInfo.destroy(req.body.id).fetch();
         if (models.length == 0) return res.notFound();
         return res.ok("Record Deleted");
     },
@@ -85,7 +96,7 @@ module.exports = {
             numOfPage = Math.ceil(searchCount / numOfItemsPerPage);
             searchModels = await RentalInfo.find({
                 where: {
-                    estate: estate ,
+                    estate: estate,
                     bedrooms: bedrooms,
                     and: [
                         { grossArea: { '>=': areaMin } },
@@ -108,8 +119,8 @@ module.exports = {
                 rentMax = req.body.RentalInfo.rentMax || Number.MAX_SAFE_INTEGER;
             searchModels = await RentalInfo.find({
                 where: {
-                     estate: estate ,
-                     bedrooms: bedrooms,
+                    estate: estate,
+                    bedrooms: bedrooms,
                     and: [
                         { grossArea: { '>=': areaMin } },
                         { grossArea: { '<=': areaMax } },
@@ -124,7 +135,7 @@ module.exports = {
             });
             searchCount = await RentalInfo.count({
                 where: {
-                    estate: estate ,
+                    estate: estate,
                     bedrooms: bedrooms,
                     and: [
                         { grossArea: { '>=': areaMin } },
@@ -149,5 +160,13 @@ module.exports = {
         return res.view('rentalInfo/search', { rentalInfo: searchModels, count: numOfPage });
 
     },
+    occupants: async function (req, res) {
+        var rentalId = req.query.rentalId;
+        var model = await RentalInfo.findOne(rentalId).populate("rentedBy");
+        if (!model) return res.notFound();
+        console.log(model);
+        console.log(model.rentedBy);
+        return res.view('rentalInfo/occupants', { users: model.rentedBy });
+    }
 };
 

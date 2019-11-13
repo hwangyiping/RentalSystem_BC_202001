@@ -1,0 +1,11 @@
+<!-- table -->
+<table class="table">
+    <tbody>
+        <% users.forEach( function(model) { %>
+        <tr>
+            <td class="sortClass"></td>
+            <td><%= model.username %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

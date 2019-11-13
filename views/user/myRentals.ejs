@@ -1,0 +1,12 @@
+<!-- table -->
+<table class="table">
+    <tbody>
+        <% rental.forEach( function(model) { %>
+        <tr>
+            <td><%= model.id %></td>
+            <td><a href="/rentalInfo/details?id=<%= model.id %>"><%= model.propertyTitle %></a></td>
+            <td><%= model.estate %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>

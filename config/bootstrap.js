@@ -33,8 +33,8 @@ module.exports.bootstrap = async function () {
 
   if (await User.count() == 0) {
     await User.createEach([
-      { username: "admin", password: hash },
-      { username: "boss", password: hash }
+      { username: "admin", password: hash, role:"admin" },
+      { username: "client", password: hash, role:"client"}
     ]);
   }
 

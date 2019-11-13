@@ -36,6 +36,10 @@ module.exports = {
     highlighted: {
       type: "boolean"
     },
+    rentedTenants: {
+      type: "number",
+      defaultsTo: 0
+    },
     //  ╔═╗╔╦╗╔╗ ╔═╗╔╦╗╔═╗
     //  ║╣ ║║║╠╩╗║╣  ║║╚═╗
     //  ╚═╝╩ ╩╚═╝╚═╝═╩╝╚═╝
@@ -45,6 +49,10 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
+    rentedBy: {
+      collection: 'User',
+      via: 'rent'
+    },
   },
 
 };

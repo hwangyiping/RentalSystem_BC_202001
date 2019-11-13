@@ -3,13 +3,29 @@
     <tbody>
         <% rentalInfo.forEach( function(model) { %>
         <tr>
-            <td><%= model.id %></td>
-            <td><%= model.propertyTitle %></td>
+            <td class="sortClass"></td>
+            <td><a href="/rentalInfo/details?id=<%= model.id %>"><%= model.propertyTitle %></a></td>
             <td><%= model.estate %></td>
+            <td><a href="/rentalInfo/occupants?rentalId=<%= model.id %>">Occupants</a></td>
             <td><a href="./update?id=<%= model.id %>">
                     Edit
                 </a></td>
+            <td><button class="btn btn-danger" onclick="Delete('<%= model.id %>')">Delete</button></td>
         </tr>
         <% }); %>
     </tbody>
 </table>
+<script>
+    async function Delete(id) {
+        var response = await fetch("/rentalInfo/delete", {
+            body: JSON.stringify({ id: id }),
+            method: "POST",
+            credentials: 'same-origin',
+        });
+
+        var html = await response.text();
+        alert(html);
+        location.reload();
+
+    }
+</script>

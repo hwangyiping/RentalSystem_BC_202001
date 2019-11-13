@@ -18,5 +18,15 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-
+  RentalInfoController: {
+    create: 'isAdmin',
+    admin: 'isAdmin',
+    update: 'isAdmin',
+    delete: 'isAdmin'
+  },
+  UserController:{
+    coRent: 'isClient',
+    moveOut: 'isClient',
+    myRentals: 'isClient',
+  }
 };

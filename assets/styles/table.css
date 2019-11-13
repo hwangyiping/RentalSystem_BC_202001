@@ -1,0 +1,8 @@
+tbody {
+    counter-reset: sectioncounter;
+}
+
+.sortClass:before {
+    content: counter(sectioncounter);
+    counter-increment: sectioncounter;
+}
