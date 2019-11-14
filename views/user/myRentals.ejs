@@ -3,7 +3,7 @@
     <tbody>
         <% rental.forEach( function(model) { %>
         <tr>
-            <td><%= model.id %></td>
+            <td class="sortClass"></td>
             <td><a href="/rentalInfo/details?id=<%= model.id %>"><%= model.propertyTitle %></a></td>
             <td><%= model.estate %></td>
         </tr>

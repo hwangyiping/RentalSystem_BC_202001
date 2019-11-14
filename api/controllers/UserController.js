@@ -52,6 +52,9 @@ module.exports = {
             res.status(401).send("No empty room");
         else {
             await User.addToCollection(user.id, 'rent').members(rental.id);
+            await RentalInfo.update(rentalId).set({
+                rentedTenants: rental.rentedTenants + 1
+            });
             return res.ok("Co-rent successfully.");
         }
     },
