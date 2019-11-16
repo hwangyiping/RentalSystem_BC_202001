@@ -1,12 +1,24 @@
-<!-- table -->
-<table class="table">
-    <tbody>
-        <% rental.forEach( function(model) { %>
-        <tr>
-            <td class="sortClass"></td>
-            <td><a href="/rentalInfo/details?id=<%= model.id %>"><%= model.propertyTitle %></a></td>
-            <td><%= model.estate %></td>
-        </tr>
-        <% }); %>
-    </tbody>
-</table>
+<div class="row no-gutters">
+    <% rental.forEach( function(model) { %>
+    <div class="col-md-6 col-xs-12">
+        <div class="card">
+            <div class="px-4 py-3">
+                <a href="/rentalInfo/details?id=<%= model.id %>">
+                    <h6 class="text-primary mb-2"><%= model.propertyTitle %></h6>
+                </a>
+                <div class="row no-gutters">
+                    <div class="col-4">
+                        <img src="<%= model.imageURL %>" class="card-img img-home" alt="..."></div>
+                    <div class="col-8 pl-4">
+                        <ul class="list-group">
+                            <li class="list-group-item"><b>Estate:</b><%= model.estate %></li>
+                            <li class="list-group-item"><b>Gross Area:</b><%= model.grossArea %> sq.ft</li>
+                            <li class="list-group-item"><b>Rent:</b>$<%= model.rent %></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }); %>
+</div>
