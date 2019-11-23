@@ -203,7 +203,7 @@
   </script>
   <script>
     //title & nav active
-    var userRole = "<%=req.session.username%>";
+    var userRole = "<%=req.session.userRole%>";
     if (userRole == "admin") {
       $("#navMyRentals").hide();
     } else if (userRole == "client") {

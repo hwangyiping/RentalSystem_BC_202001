@@ -164,8 +164,6 @@ module.exports = {
         var rentalId = req.query.rentalId;
         var model = await RentalInfo.findOne(rentalId).populate("rentedBy");
         if (!model) return res.notFound();
-        console.log(model);
-        console.log(model.rentedBy);
         return res.view('rentalInfo/occupants', { users: model.rentedBy });
     }
 };

@@ -26,6 +26,8 @@ module.exports = {
 
             req.session.username = req.body.username;
 
+            req.session.userId = user.id;
+
             req.session.userRole = user.role;
 
             return res.ok("Login successfully.");
@@ -42,31 +44,31 @@ module.exports = {
 
         });
     },
-    coRent: async function (req, res) {
-        let rentalId = req.body.rentalId;
-        let userName = req.session.username;
-        if (!userName) return res.status(401).send("You need to login first.");
-        const user = await User.findOne({ username: userName });
-        const rental = await RentalInfo.findOne({ id: rentalId });
-        if (rental.expectedTenants - rental.rentedTenants == 0)
-            res.status(401).send("No empty room");
-        else {
-            await User.addToCollection(user.id, 'rent').members(rental.id);
-            await RentalInfo.update(rentalId).set({
-                rentedTenants: rental.rentedTenants + 1
-            });
-            return res.ok("Co-rent successfully.");
-        }
-    },
-    moveOut: async function (req, res) {
-        let rentalId = req.body.rentalId;
-        let userName = req.session.username;
-        const user = await User.findOne({ username: userName });
-        const rental = await RentalInfo.findOne({ id: rentalId });
-        if (!userName) return res.badRequest("You need to Login.");
-        await User.removeFromCollection(user.id, 'rent').members(rental.id);
-        return res.ok("Move out successfully.");
-    },
+    // coRent: async function (req, res) {
+    //     let rentalId = req.body.rentalId;
+    //     let userName = req.session.username;
+    //     if (!userName) return res.status(401).send("You need to login first.");
+    //     const user = await User.findOne({ username: userName });
+    //     const rental = await RentalInfo.findOne({ id: rentalId });
+    //     if (rental.expectedTenants - rental.rentedTenants == 0)
+    //         res.status(401).send("No empty room");
+    //     else {
+    //         await User.addToCollection(user.id, 'rent').members(rental.id);
+    //         await RentalInfo.update(rentalId).set({
+    //             rentedTenants: rental.rentedTenants + 1
+    //         });
+    //         return res.ok("Co-rent successfully.");
+    //     }
+    // },
+    // moveOut: async function (req, res) {
+    //     let rentalId = req.body.rentalId;
+    //     let userName = req.session.username;
+    //     const user = await User.findOne({ username: userName });
+    //     const rental = await RentalInfo.findOne({ id: rentalId });
+    //     if (!userName) return res.badRequest("You need to Login.");
+    //     await User.removeFromCollection(user.id, 'rent').members(rental.id);
+    //     return res.ok("Move out successfully.");
+    // },
     myRentals: async function (req, res) {
         let userName = req.session.username;
         const user = await User.findOne({ username: userName });

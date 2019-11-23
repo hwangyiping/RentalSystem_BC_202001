@@ -25,8 +25,6 @@ module.exports.policies = {
     delete: 'isAdmin'
   },
   UserController:{
-    coRent: 'isClient',
-    moveOut: 'isClient',
     myRentals: 'isClient',
   }
 };

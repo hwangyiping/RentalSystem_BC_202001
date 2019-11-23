@@ -66,19 +66,18 @@
 
     //co rent
     async function coRent() {
-        var id = parseInt("<%= rentalInfo.id %>");
+        var rentalId = parseInt("<%= rentalInfo.id %>");
+        var userId = parseInt("<%=req.session.userId%>");
         var r = confirm("Are you sure to Co-rent?");
 
         if (r) {
 
-            var response = await fetch("/user/coRent/", {
-                body: JSON.stringify({ rentalId: id }),
-                method: "POST",
+            var response = await fetch("/user/" + userId + "/rent/" + rentalId, {
+                method: "PUT",
                 credentials: 'same-origin',
             });
 
-            var html = await response.text();
-            alert(html);
+            alert("Co-rent successfully!");
             location.reload();
 
         }
@@ -97,19 +96,18 @@
 
     //move out
     async function moveOut(){
-        var id = parseInt("<%= rentalInfo.id %>");
+        var rentalId = parseInt("<%= rentalInfo.id %>");
+        var userId = parseInt("<%=req.session.userId%>");
         var r = confirm("Are you sure to move out?");
 
         if (r) {
 
-            var response = await fetch("/user/moveOut/", {
-                body: JSON.stringify({ rentalId: id }),
-                method: "POST",
+            var response = await fetch("/user/" + userId + "/rent/" + rentalId, {
+                method: "DELETE",
                 credentials: 'same-origin',
             });
 
-            var html = await response.text();
-            alert(html);
+            alert("Move-out successfully!");
             location.reload();
 
         }

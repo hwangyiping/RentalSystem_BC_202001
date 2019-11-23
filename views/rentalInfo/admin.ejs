@@ -17,9 +17,9 @@
 </table>
 <script>
     async function Delete(id) {
-        var response = await fetch("/rentalInfo/delete", {
+        var response = await fetch("/rentalInfo", {
             body: JSON.stringify({ id: id }),
-            method: "POST",
+            method: "DELETE",
             credentials: 'same-origin',
         });
 
