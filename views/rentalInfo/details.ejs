@@ -66,36 +66,44 @@
 
     //co rent
     async function coRent() {
-        var rentalId = parseInt("<%= rentalInfo.id %>");
-        var userId = parseInt("<%=req.session.userId%>");
-        var r = confirm("Are you sure to Co-rent?");
-
-        if (r) {
-
-            var response = await fetch("/user/" + userId + "/rent/" + rentalId, {
-                method: "PUT",
-                credentials: 'same-origin',
-            });
-
-            alert("Co-rent successfully!");
+        var expectedTenants = parseInt("<%= rentalInfo.expectedTenants %>");
+        var rentedTenants = parseInt("<%= rentalInfo.rentedTenants %>");
+        if (expectedTenants - rentedTenants == 0) {
+            alert("No empty room");
             location.reload();
-
+        } else {
+            var rentalId = parseInt("<%= rentalInfo.id %>");
+            var userId = parseInt("<%=req.session.userId%>");
+            var r = confirm("Are you sure to Co-rent?");
+            if (r) {
+                await fetch("/user/" + userId + "/rent/" + rentalId, {
+                    method: "PUT",
+                    credentials: 'same-origin',
+                });
+                await fetch("/rentalinfo/"+rentalId, {
+                    method: "PATCH",
+                    body: JSON.stringify({ "rentedTenants": rentedTenants + 1 }),
+                    credentials: 'same-origin',
+                });
+                alert("Co-rent successfully!");
+                location.reload();
+            }
         }
     }
 
     //button css
     var isRenter = "<%=isRenter%>";
-    if(isRenter == "true"){
+    if (isRenter == "true") {
         $("#coRent").hide();
         $("#moveOut").show();
     }
-    else{
+    else {
         $("#coRent").show();
         $("#moveOut").hide();
     }
 
     //move out
-    async function moveOut(){
+    async function moveOut() {
         var rentalId = parseInt("<%= rentalInfo.id %>");
         var userId = parseInt("<%=req.session.userId%>");
         var r = confirm("Are you sure to move out?");

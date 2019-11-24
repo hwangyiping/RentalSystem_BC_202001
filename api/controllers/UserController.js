@@ -60,15 +60,6 @@ module.exports = {
     //         return res.ok("Co-rent successfully.");
     //     }
     // },
-    // moveOut: async function (req, res) {
-    //     let rentalId = req.body.rentalId;
-    //     let userName = req.session.username;
-    //     const user = await User.findOne({ username: userName });
-    //     const rental = await RentalInfo.findOne({ id: rentalId });
-    //     if (!userName) return res.badRequest("You need to Login.");
-    //     await User.removeFromCollection(user.id, 'rent').members(rental.id);
-    //     return res.ok("Move out successfully.");
-    // },
     myRentals: async function (req, res) {
         let userName = req.session.username;
         const user = await User.findOne({ username: userName });

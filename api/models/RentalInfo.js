@@ -27,7 +27,7 @@ module.exports = {
     imageURL: {
       type: "string"
     },
-    Bedrooms: {
+    bedrooms: {
       type: "number"
     },
     expectedTenants: {

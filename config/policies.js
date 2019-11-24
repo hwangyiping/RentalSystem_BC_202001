@@ -21,7 +21,7 @@ module.exports.policies = {
   RentalInfoController: {
     create: 'isAdmin',
     admin: 'isAdmin',
-    update: 'isAdmin',
+    // update: 'isAdmin',
     delete: 'isAdmin'
   },
   UserController:{
